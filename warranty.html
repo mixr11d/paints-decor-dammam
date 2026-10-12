@@ -21,13 +21,13 @@
 </head>
 <body>
 
-  <!-- Urgency Bar -->
+  <!-- Luxury Urgency Top Bar -->
   <div class="urgency-bar">
     <span>🛡️ جميع أعمالنا مشمولة بضمان خطي معتمد ومختوم لحماية حقوقك بالدمام!</span>
     <a href="tel:0508292778">استفسر عن تفاصيل الضمان: 0508292778</a>
   </div>
 
-  <!-- Header -->
+  <!-- Minimalist Luxury Header -->
   <header>
     <div class="container navbar">
       <a href="/" class="nav-brand">
@@ -35,71 +35,57 @@
         <span>أصباغ وديكورات الدمام</span>
       </a>
 
-      <ul class="nav-menu">
-        <li><a href="/">الرئيسية</a></li>
-        <li>
-          <a href="#">الخدمات ▾</a>
-          <ul class="dropdown-menu">
-            <li><a href="/interior-painting.html">دهانات داخلية وديكورات</a></li>
-            <li><a href="/exterior-painting.html">دهانات واجهات بروفايل</a></li>
-            <li><a href="/door-paint.html">رش وترميم الأبواب</a></li>
-            <li><a href="/renovation-finishing.html">ترميم وتشطيب مباني</a></li>
-            <li><a href="/roof-insulation.html">عوازل أسطح ومباني</a></li>
-          </ul>
-        </li>
-        <li><a href="/prices.html">الأسعار</a></li>
-        <li><a href="/our-works.html">معرض الأعمال</a></li>
-        <li><a href="/city-landing.html">أحياء الدمام</a></li>
-        <li><a href="/warranty.html" class="active">الضمان</a></li>
-        <li><a href="/contact-us.html">اتصل بنا</a></li>
-      </ul>
-
-      <button class="menu-toggle" aria-label="فتح القائمة">☰</button>
-    </div>
-
-    <!-- شريط الخدمات السريع للتنقل بالجوال -->
-    <div class="mobile-services-scroll">
-      <a href="/interior-painting.html">🎨 دهانات داخلية</a>
-      <a href="/exterior-painting.html">🏛️ واجهات وبروفايل</a>
-      <a href="/door-paint.html">🚪 رش أبواب</a>
-      <a href="/renovation-finishing.html">🔨 ترميم وتشطيب</a>
-      <a href="/roof-insulation.html">💧 عوازل أسطح</a>
-      <a href="/prices.html">🏷️ الأسعار</a>
+      <!-- 3-Lines Hamburger Icon -->
+      <button class="menu-toggle" aria-label="فتح القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+  <!-- Luxury Slide Drawer -->
   <div class="mobile-overlay"></div>
   <aside class="mobile-drawer">
     <div>
-      <div class="mobile-drawer-header">
-        <strong style="color:var(--primary); font-size:1.1rem;">أصباغ الدمام</strong>
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <img src="/images/logo_result.webp" alt="أصباغ الدمام" style="width:28px; height:28px; border-radius:6px;" onerror="this.onerror=null; this.src='/preview.jpeg';">
+          <span>أصباغ وديكورات الدمام</span>
+        </div>
         <button class="drawer-close" aria-label="إغلاق">&times;</button>
       </div>
 
-      <ul class="mobile-nav-list">
+      <ul class="drawer-nav-list">
         <li><a href="/">🏠 الرئيسية</a></li>
 
-        <div class="drawer-category-title">الخدمات المتخصصة</div>
-        <li><a href="/interior-painting.html">🎨 دهانات داخلية وديكورات</a></li>
-        <li><a href="/exterior-painting.html">🏛️ دهانات واجهات وبروفايل</a></li>
-        <li><a href="/door-paint.html">🚪 رش وتجديد الأبواب</a></li>
-        <li><a href="/renovation-finishing.html">🔨 ترميم وتشطيب مباني</a></li>
-        <li><a href="/roof-insulation.html">💧 عوازل أسطح مائية وحرارية</a></li>
+        <!-- Dropdown for Services -->
+        <li>
+          <button type="button" class="drawer-dropdown-btn">
+            <span>🎨 خدماتنا</span>
+            <span class="drawer-arrow">▼</span>
+          </button>
+          <div class="drawer-dropdown-content">
+            <a href="/interior-painting.html">• دهانات داخلية وديكورات</a>
+            <a href="/exterior-painting.html">• دهانات واجهات وبروفايل</a>
+            <a href="/door-paint.html">• رش وترميم الأبواب</a>
+            <a href="/renovation-finishing.html">• ترميم وتشطيب مباني</a>
+            <a href="/roof-insulation.html">• عوازل أسطح مائية وحرارية</a>
+          </div>
+        </li>
 
-        <div class="drawer-category-title">الأسعار والمعلومات</div>
         <li><a href="/prices.html">🏷️ قائمة الأسعار</a></li>
         <li><a href="/our-works.html">📷 معرض الأعمال (قبل وبعد)</a></li>
-        <li><a href="/city-landing.html">📍 تغطية أحياء الدمام</a></li>
+        <li><a href="/city-landing.html">📍 أحياء مدينة الدمام</a></li>
         <li><a href="/warranty.html" class="active">🛡️ شهادة الضمان الرسمي</a></li>
         <li><a href="/about-us.html">⭐ من نحن</a></li>
         <li><a href="/contact-us.html">📞 اتصل بنا</a></li>
       </ul>
     </div>
 
-    <div class="mobile-drawer-footer">
-      <a href="tel:0508292778" class="btn btn-call" style="font-size:0.92rem; padding:0.65rem;">📞 اتصال: 0508292778</a>
-      <a href="https://wa.me/966508292778" class="btn btn-whatsapp" style="font-size:0.92rem; padding:0.65rem;">💬 واتساب فوري</a>
+    <div class="drawer-contact-card">
+      <a href="tel:0508292778" class="btn btn-call" style="font-size:0.95rem; padding:0.7rem;">📞 اتصال: 0508292778</a>
+      <a href="https://wa.me/966508292778" class="btn btn-whatsapp" style="font-size:0.95rem; padding:0.7rem;">💬 واتساب مباشر</a>
     </div>
   </aside>
 
@@ -182,7 +168,7 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- Luxury Footer -->
   <footer>
     <div class="container">
       <div class="footer-grid">
@@ -199,16 +185,27 @@
             <li><a href="/about-us.html">من نحن</a></li>
           </ul>
         </div>
-        <div class="footer-col">
+        <div class="footer-col footer-contact-info">
           <h4>التواصل</h4>
-          <p>📞 اتصال: 0508292778</p>
-          <p>💬 واتساب: 0508292778</p>
           <p>📍 الدمام - حي الشاطئ والفيصلية والفاخرية</p>
+          <p>
+            📞 هاتف: 
+            <a href="tel:0508292778" class="footer-phone-highlight">0508292778</a>
+          </p>
+          <p>
+            💬 واتساب: 
+            <a href="https://wa.me/966508292778" class="footer-phone-highlight">0508292778</a>
+          </p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>جميع الحقوق محفوظة © 2026 أصباغ وديكورات وترميم الدمام | <a href="/privacy-policy.html">سياسة الخصوصية</a></p>
-        <p style="margin-top: 0.5rem;"><a href="https://wa.me/966578539687" target="_blank" rel="noopener">تطوير مواقع وإعلانات مؤسسة mix.tec</a></p>
+        
+        <!-- Luxury Developer Signature Badge -->
+        <div class="developer-signature-badge">
+          <span>✨</span>
+          <a href="https://wa.me/966578539687" target="_blank" rel="noopener">تطوير مواقع وإعلانات مؤسسة mix.tec</a>
+        </div>
       </div>
     </div>
   </footer>
