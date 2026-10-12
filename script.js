@@ -18,21 +18,21 @@ gtag('config', G_ID);
   (document.head || document.documentElement).appendChild(gScript);
 })();
 
-// Unregister legacy Service Workers to prevent white screens
+// Unregister legacy Service Workers
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.getRegistrations().then(function(regs) {
     regs.forEach(function(r) { r.unregister(); });
   });
 }
 
-// 2. Click Sensor: Call & WhatsApp Conversions with Dev Number Exclusion
+// 2. Click Sensor: Call & WhatsApp Conversions with Dev Exclusion
 document.addEventListener('click', function(e) {
   var target = e.target.closest('a');
   if (!target) return;
 
   var href = target.getAttribute('href') || '';
 
-  // Prevent counting Developer's WhatsApp / Calls
+  // Prevent counting Developer's clicks
   var isDev = DEV_NUMS.some(function(num) { return href.includes(num); });
   if (isDev) return;
 
@@ -43,30 +43,51 @@ document.addEventListener('click', function(e) {
   }
 }, true);
 
-// 3. Page Lifecycle, Drawer, Lightbox & Form Handler
+// 3. UI Interactions (Drawer, Accordion, Lightbox, Forms)
 document.addEventListener('DOMContentLoaded', function() {
   // Fire conversion on thank-you page automatically
   if (window.location.pathname.includes('thank-you')) {
     gtag('event', 'conversion', { 'send_to': G_ID + '/' + F_L });
   }
 
-  // Mobile Drawer Toggle
+  // Luxury Slide Drawer Logic
   var menuBtn = document.querySelector('.menu-toggle');
   var drawer = document.querySelector('.mobile-drawer');
   var overlay = document.querySelector('.mobile-overlay');
   var closeBtn = document.querySelector('.drawer-close');
 
-  function toggleMenu(show) {
+  function openDrawer() {
     if (drawer && overlay) {
-      drawer.classList.toggle('active', show);
-      overlay.style.display = show ? 'block' : 'none';
-      document.body.style.overflow = show ? 'hidden' : '';
+      overlay.classList.add('active');
+      drawer.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
   }
 
-  if (menuBtn) menuBtn.addEventListener('click', function() { toggleMenu(true); });
-  if (closeBtn) closeBtn.addEventListener('click', function() { toggleMenu(false); });
-  if (overlay) overlay.addEventListener('click', function() { toggleMenu(false); });
+  function closeDrawer() {
+    if (drawer && overlay) {
+      overlay.classList.remove('active');
+      drawer.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (menuBtn) menuBtn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
+
+  // Accordion for "خدماتنا" inside Drawer
+  var dropdownBtn = document.querySelector('.drawer-dropdown-btn');
+  var dropdownContent = document.querySelector('.drawer-dropdown-content');
+  var dropdownArrow = document.querySelector('.drawer-arrow');
+
+  if (dropdownBtn && dropdownContent) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var isOpen = dropdownContent.classList.toggle('open');
+      if (dropdownArrow) dropdownArrow.classList.toggle('open', isOpen);
+    });
+  }
 
   // Scroll to Top
   var scrollBtn = document.querySelector('.scroll-top');
@@ -81,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Pure Lightbox Modal
+  // Vanilla Lightbox Modal System
   var lightbox = document.createElement('div');
   lightbox.className = 'lightbox-modal';
   lightbox.innerHTML = '<div class="lightbox-content"><button class="lightbox-close">&times;</button><img class="lightbox-img" src="" alt=""><div class="lightbox-caption"></div></div>';
