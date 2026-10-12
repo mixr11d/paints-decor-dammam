@@ -42,7 +42,7 @@ document.addEventListener('click', function(e) {
 }, true);
 
 // ========================================================
-// 2. حقن التنسيقات الفاخرة إجبارياً لمنع تكسر القائمة (Forced CSS)
+// 2. حقن التنسيقات الفاخرة والأزرار العائمة إجبارياً
 // ========================================================
 (function injectLuxuryStyles() {
   var style = document.createElement('style');
@@ -262,6 +262,63 @@ document.addEventListener('click', function(e) {
     .drawer-btn-call { background: #0284c7 !important; }
     .drawer-btn-wa { background: #25d366 !important; }
 
+    /* ================= الأيقونات العائمة الثابتة وزر الصعود ================= */
+    .custom-floating-actions {
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      z-index: 99990 !important;
+    }
+    .custom-float-btn {
+      width: 54px !important;
+      height: 54px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3) !important;
+      font-size: 1.5rem !important;
+      text-decoration: none !important;
+      animation: floatPulseShake 4s infinite ease-in-out !important;
+    }
+    .custom-float-wa {
+      background: #25d366 !important;
+    }
+    .custom-float-call {
+      background: #0284c7 !important;
+      animation-delay: 2s !important;
+    }
+    .custom-scroll-top {
+      position: fixed !important;
+      bottom: 20px !important;
+      left: 20px !important;
+      width: 44px !important;
+      height: 44px !important;
+      background: #0b1329 !important;
+      color: #ffffff !important;
+      border-radius: 8px !important;
+      display: none;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      z-index: 99990 !important;
+      border: 1px solid #334155 !important;
+      font-size: 1.2rem !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+    }
+
+    @keyframes floatPulseShake {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      60% { transform: scale(1.08) rotate(-4deg); }
+      70% { transform: scale(1.08) rotate(4deg); }
+      80% { transform: scale(1); }
+    }
+
     /* تمييز أرقام الفوتر وحقوق المطور */
     .footer-gold-phone {
       color: #fbbf24 !important;
@@ -300,7 +357,7 @@ document.addEventListener('click', function(e) {
 })();
 
 // ========================================================
-// 3. بناء الهيكل الفاخر واستبدال الهيدر والفوتر تلقائياً
+// 3. بناء الهيكل الفاخر وحقن الأزرار العائمة وزر الصعود
 // ========================================================
 function setupLuxuryLayout() {
   // 1. إعادة بناء الهيدر
@@ -323,7 +380,7 @@ function setupLuxuryLayout() {
     `;
   }
 
-  // 2. إزالة أي دراور سابق وحقن الدراور الفاخر في جسم الصفحة
+  // 2. إزالة أي عناصر سابقة وحقن الدراور الفاخر
   var oldDrawer = document.getElementById('luxurySideDrawer');
   if (oldDrawer) oldDrawer.remove();
   var oldBackdrop = document.getElementById('luxuryDrawerBackdrop');
@@ -375,7 +432,27 @@ function setupLuxuryLayout() {
   `;
   document.body.appendChild(drawerWrapper);
 
-  // 3. إعادة بناء الفوتر
+  // 3. حقن الأزرار العائمة الثابتة بالأسفل وزر الصعود
+  var oldFloat = document.querySelector('.custom-floating-actions');
+  if (oldFloat) oldFloat.remove();
+  var oldScroll = document.querySelector('.custom-scroll-top');
+  if (oldScroll) oldScroll.remove();
+
+  var floatingActions = document.createElement('div');
+  floatingActions.className = 'custom-floating-actions';
+  floatingActions.innerHTML = `
+    <a href="https://wa.me/966508292778" class="custom-float-btn custom-float-wa" aria-label="واتساب">💬</a>
+    <a href="tel:0508292778" class="custom-float-btn custom-float-call" aria-label="اتصال مباشر">📞</a>
+  `;
+  document.body.appendChild(floatingActions);
+
+  var scrollTopBtn = document.createElement('button');
+  scrollTopBtn.className = 'custom-scroll-top';
+  scrollTopBtn.setAttribute('aria-label', 'أعلى الصفحة');
+  scrollTopBtn.innerHTML = '▲';
+  document.body.appendChild(scrollTopBtn);
+
+  // 4. إعادة بناء الفوتر
   var footer = document.querySelector('footer');
   if (footer) {
     footer.innerHTML = `
@@ -460,6 +537,16 @@ function setupLuxuryLayout() {
       if (arrow) arrow.classList.toggle('open', isOpen);
     };
   }
+
+  // تفعيل زر الصعود للأعلى
+  window.addEventListener('scroll', function() {
+    if (scrollTopBtn) {
+      scrollTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    }
+  });
+  scrollTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 }
 
 // ========================================================
@@ -470,19 +557,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (window.location.pathname.includes('thank-you')) {
     gtag('event', 'conversion', { 'send_to': G_ID + '/' + F_L });
-  }
-
-  // زر الصعود
-  var scrollBtn = document.querySelector('.scroll-top');
-  window.addEventListener('scroll', function() {
-    if (scrollBtn) {
-      scrollBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
-    }
-  });
-  if (scrollBtn) {
-    scrollBtn.onclick = function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
   }
 
   // Lightbox لتكبير الصور
