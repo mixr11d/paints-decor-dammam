@@ -43,14 +43,14 @@ document.addEventListener('click', function(e) {
   }
 }, true);
 
-// 3. Page Lifecycle, Lightbox & Form Handler
+// 3. Page Lifecycle, Drawer, Lightbox & Form Handler
 document.addEventListener('DOMContentLoaded', function() {
   // Fire conversion on thank-you page automatically
   if (window.location.pathname.includes('thank-you')) {
     gtag('event', 'conversion', { 'send_to': G_ID + '/' + F_L });
   }
 
-  // Mobile Drawer Setup
+  // Mobile Drawer Toggle
   var menuBtn = document.querySelector('.menu-toggle');
   var drawer = document.querySelector('.mobile-drawer');
   var overlay = document.querySelector('.mobile-overlay');
@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (drawer && overlay) {
       drawer.classList.toggle('active', show);
       overlay.style.display = show ? 'block' : 'none';
+      document.body.style.overflow = show ? 'hidden' : '';
     }
   }
 
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (closeBtn) closeBtn.addEventListener('click', function() { toggleMenu(false); });
   if (overlay) overlay.addEventListener('click', function() { toggleMenu(false); });
 
-  // Scroll to Top Button
+  // Scroll to Top
   var scrollBtn = document.querySelector('.scroll-top');
   window.addEventListener('scroll', function() {
     if (scrollBtn) {
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Vanilla Lightbox Modal System
+  // Pure Lightbox Modal
   var lightbox = document.createElement('div');
   lightbox.className = 'lightbox-modal';
   lightbox.innerHTML = '<div class="lightbox-content"><button class="lightbox-close">&times;</button><img class="lightbox-img" src="" alt=""><div class="lightbox-caption"></div></div>';
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function closeLightbox() {
     lightbox.classList.remove('active');
+    document.body.style.overflow = '';
   }
 
   lbClose.addEventListener('click', closeLightbox);
@@ -109,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
       lbImg.src = this.src;
       lbCap.textContent = this.alt || 'معاينة المشروع';
       lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
     });
   });
 
