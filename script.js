@@ -1,10 +1,10 @@
 // ========================================================
 // 1. إعدادات تتبع إعلانات قوقل وحماية الميزانية
 // ========================================================
-var G_ID = 'AW-XXXXXXXXXXX';
-var C_L  = 'XXXXXXXXXXXXXXXXXX';
-var W_L  = 'XXXXXXXXXXXXXXXXXX';
-var F_L  = 'XXXXXXXXXXXXXXXXXX';
+var G_ID = 'AW-18483137647';
+var C_L  = 'dDGACJqF_6AdEO-Yue1E';
+var W_L  = 'mAf2CJ2F_6AdEO-Yue1E';
+var F_L  = 'exEnCL6O_6AdEO-Yue1E';
 var DEV_NUMS = ['0578539687', '966578539687'];
 
 window.dataLayer = window.dataLayer || [];
