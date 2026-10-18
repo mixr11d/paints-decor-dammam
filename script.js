@@ -408,6 +408,7 @@ function setupLuxuryLayout() {
             </button>
             <div id="servicesNestedMenu">
               <a href="/interior-painting.html">• دهانات داخلية وديكورات</a>
+              <a href="/decor.html">• ديكورات كيرف وشيبورد حديثة</a>
               <a href="/exterior-painting.html">• دهانات واجهات وبروفايل</a>
               <a href="/door-paint.html">• رش وترميم الأبواب</a>
               <a href="/renovation-finishing.html">• ترميم وتشطيب مباني</a>
@@ -466,6 +467,7 @@ function setupLuxuryLayout() {
             <h4>خدماتنا المميزة</h4>
             <ul>
               <li><a href="/interior-painting.html">دهانات داخلية وديكورات</a></li>
+              <li><a href="/decor.html">ديكورات كيرف وشيبورد حديثة</a></li>
               <li><a href="/exterior-painting.html">دهانات واجهات بروفايل</a></li>
               <li><a href="/door-paint.html">رش وترميم الأبواب</a></li>
               <li><a href="/renovation-finishing.html">ترميم وتشطيب مباني</a></li>
